@@ -130,6 +130,7 @@ get_cpuid_info ()
   cpi->cpi_model = (reg >> 4) & 0xfff;
   switch (cpi->cpi_vendor)
     {
+    //case ARM_CPU_IMP_FUJI:
     case ARM_CPU_IMP_APM:
     case ARM_CPU_IMP_ARM:
     case ARM_CPU_IMP_CAVIUM:

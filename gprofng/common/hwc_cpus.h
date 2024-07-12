@@ -116,17 +116,26 @@ extern cpu_info_t *read_cpuinfo();
 #define CPC_SPARC64_VII     4004 /* Jupiter */
 #define CPC_SPARC64_X       4006 /* Athena */
 #define CPC_SPARC64_XII     4010 /* Athena++ */
+/*#define ARM_CPU_IMP_ARM   0x41
+#define ARM_CPU_IMP_BRCM    0x42
+#define ARM_CPU_IMP_CAVIUM  0x43
+#define ARM_CPU_IMP_APM     0x50
+#define ARM_CPU_IMP_QCOM    0x51*/
+
+
 
 // aarch64. Constants from arch/arm64/include/asm/cputype.h
 enum {
+
     ARM_CPU_IMP_ARM     = 0x41,
+    ARM_CPU_IMP_FUJI    = 0x46,
     ARM_CPU_IMP_BRCM    = 0x42,
     ARM_CPU_IMP_CAVIUM  = 0x43,
     ARM_CPU_IMP_APM     = 0x50,
     ARM_CPU_IMP_QCOM    = 0x51
 };
 
-#define	AARCH64_VENDORSTR_ARM	"ARM"
+#define	AARCH64_VENDORSTR_ARM	"ARM64"
 
   /* strings below must match those returned by cpc_getcpuver() */
   typedef struct
@@ -208,6 +217,7 @@ enum {
   {ARM_CPU_IMP_APM           , AARCH64_VENDORSTR_ARM}, \
   {CPC_AMD_Authentic         , "AuthenticAMD"}, \
   {0, NULL}
+  
   /* init like this:
      static libcpc2_cpu_lookup_t cpu_table[]={LIBCPC2_CPU_LOOKUP_LIST};
    */

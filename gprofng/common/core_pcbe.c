@@ -2697,7 +2697,7 @@ const struct events_table_t events_generic[] = {
   HWE("instructions",           PERF_COUNT_HW_INSTRUCTIONS)
   HWE("ref-cycles",             PERF_COUNT_HW_REF_CPU_CYCLES)
   HWE("stalled-cycles-backend", PERF_COUNT_HW_STALLED_CYCLES_BACKEND)
-  HWE("stalled-cycles-frontend", PERF_COUNT_HW_STALLED_CYCLES_FRONTEND)
+  HWE("stalled-cycles-frontend",PERF_COUNT_HW_STALLED_CYCLES_FRONTEND)
 
 // Software event
 #define SWE(nm, id)     { id, 0, C_ALL, nm, PERF_TYPE_SOFTWARE, 0, 0 },
@@ -2719,13 +2719,13 @@ const struct events_table_t events_generic[] = {
   HWCE("L1-dcache-stores",      PERF_COUNT_HW_CACHE_L1D,  PERF_COUNT_HW_CACHE_OP_WRITE, PERF_COUNT_HW_CACHE_RESULT_ACCESS)
   HWCE("L1-icache-load-misses", PERF_COUNT_HW_CACHE_L1I,  PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS)
   HWCE("L1-icache-loads",       PERF_COUNT_HW_CACHE_L1I,  PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_ACCESS)
-//    HWCE("branch-load-misses",)
-//    HWCE("branch-loads",)
+  HWCE("branch-load-misses",    PERF_COUNT_HW_CACHE_BPU,  PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS)
+  HWCE("branch-loads",          PERF_COUNT_HW_CACHE_BPU,  PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_ACCESS)
   HWCE("dTLB-load-misses",      PERF_COUNT_HW_CACHE_DTLB, PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS)
   HWCE("dTLB-loads",            PERF_COUNT_HW_CACHE_DTLB, PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_ACCESS)
   HWCE("iTLB-load-misses",      PERF_COUNT_HW_CACHE_ITLB, PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_MISS)
   HWCE("iTLB-loads",            PERF_COUNT_HW_CACHE_ITLB, PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_ACCESS)
-
+  HWCE("iTLB-loads",            PERF_COUNT_HW_CACHE_ITLB, PERF_COUNT_HW_CACHE_OP_READ,  PERF_COUNT_HW_CACHE_RESULT_ACCESS)
   NT_END
 };
 
@@ -2741,6 +2741,7 @@ core_pcbe_init (void)
       num_ffc = 0;
       total_pmc = num_gpc + num_ffc;
       return 0;
+    case ARM_CPU_IMP_FUJI:
     case ARM_CPU_IMP_ARM:
     case ARM_CPU_IMP_BRCM:
     case ARM_CPU_IMP_CAVIUM:

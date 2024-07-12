@@ -2447,7 +2447,12 @@ static Hwcentry	generic_list[] = {
   { HWCE("iTLB-loads", STXT("The Instruction TLB Loads"),
 	 PERF_COUNT_HW_CACHE_ITLB,
 	 PERF_COUNT_HW_CACHE_OP_READ, PERF_COUNT_HW_CACHE_RESULT_ACCESS) },
-
+  { HWCE("branch-loads", STXT("branch Instruction Loads"),
+         PERF_COUNT_HW_CACHE_BPU,
+         PERF_COUNT_HW_CACHE_OP_READ, PERF_COUNT_HW_CACHE_RESULT_ACCESS) },
+  { HWCE("branch-load-misses", STXT("branch Instruction Loads Miss"),
+         PERF_COUNT_HW_CACHE_BPU,
+         PERF_COUNT_HW_CACHE_OP_READ, PERF_COUNT_HW_CACHE_RESULT_MISS) },
   {NULL, NULL, 0, NULL, 0, 0, 0, 0, ABST_NONE}
 };
 
